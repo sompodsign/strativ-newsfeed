@@ -61,7 +61,6 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
 ]
@@ -80,7 +79,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "newsfeed.users",
-    # Your stuff: custom apps go here
+    "news.apps.NewsConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -324,5 +323,3 @@ SPECTACULAR_SETTINGS = {
         {"url": "https://strativ.shampad.live", "description": "Production server"},
     ],
 }
-# Your stuff...
-# ------------------------------------------------------------------------------
