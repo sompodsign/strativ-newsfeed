@@ -11,7 +11,7 @@ class NewsFeedView(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'news_feed/feed.html'
     context_object_name = 'articles'
-    paginate_by = 5
+    paginate_by = 12
 
     def get_queryset(self, *args, **kwargs):
         user = self.request.user

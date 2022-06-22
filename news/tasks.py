@@ -34,4 +34,5 @@ def curate_news():
                         thumbnail=top_headline['urlToImage'],
                         url=top_headline['url'],
                         sources=top_headline['source']['name'],
+                        country=top_headline['country']
                     )

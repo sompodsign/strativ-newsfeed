@@ -7,10 +7,10 @@
   {% if articles|length == 0 %}
     <h3>No news for you yet</h3>
   {% else %}
+    <div class="d-flex flex-wrap">
     {% for article in articles %}
 
-
-      <div class="card" style="width: 18rem;">
+      <div class="card m-2" style="width: 18rem;">
       <a href="{{ article.url }}" class="article-card">
         <img class="card-img-top" src="{{ article.thumbnail }}" alt="{{ article.title }}">
         <div class="card-body">
@@ -22,6 +22,7 @@
       </div>
 
     {% endfor %}
+    </div>
   {% endif %}
 
     {# .... **Now the pagination section** .... #}
