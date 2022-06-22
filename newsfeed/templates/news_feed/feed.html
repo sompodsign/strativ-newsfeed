@@ -14,8 +14,7 @@
       <a href="{{ article.url }}" class="article-card">
         <img class="card-img-top" src="{{ article.thumbnail }}" alt="{{ article.title }}">
         <div class="card-body">
-          <h5 class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</h5>
+          <h5 class="card-text">{{ article.title }}</h5>
         </div>
         </a>
         <p class="card-bottom">Source: {{ article.sources }} | Country: {{ article.country }}</p>
@@ -27,19 +26,25 @@
 
     {# .... **Now the pagination section** .... #}
     {% if is_paginated %}
-        <div class="pagination">
-            <span class="page-links">
+
+        <nav aria-label="...">
+            <ul class="pagination">
                 {% if page_obj.has_previous %}
+                      <li class="page-item disabled">
                     <a href="/news?page={{ page_obj.previous_page_number }}">previous</a>
+                   </li>
                 {% endif %}
                 <span class="page-current">
                     Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
+                  <li class="page-item">
                     <a href="/news?page={{ page_obj.next_page_number }}">next</a>
+                  </li>
                 {% endif %}
-            </span>
-        </div>
+            </ul>
+        </nav>
+
     {% endif %}
 
 {% endblock %}
