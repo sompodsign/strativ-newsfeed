@@ -323,3 +323,20 @@ SPECTACULAR_SETTINGS = {
         {"url": "https://strativ.shampad.live", "description": "Production server"},
     ],
 }
+
+COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria"),
+                   ("au", "Australia"), ("be", "Belgium"), ("bg", "Bulgaria"),
+                   ("br", "Brazil"), ("ca", "Canada"), ("ch", "Switzerland"),
+                   ("cn", "China"), ("co", "Colombia"), ("cu", "Cuba"), ("cz", "Czech Republic"),
+                   ("de", "Denmark"), ("eg", "Egypt"), ("fr", "France"), ("gb", "United Kingdom"),
+                   ("gr", "Greece"), ("us", "United States"), ("hu", "Hungary"), ("id", "Indonesia"),
+                   ("ie", "Ireland"), ("ua", "Ukraine"), ("it", "Italy"), ("jp", "Japan"),
+                   ("kr", "South Korea"), ("lt", "Lithuania"), ("lv", "Latvia"), ("ma", "Morocco"),
+                   ("mx", "Mexico"), ("my", "Malaysia"), ("ng", "Nigeria"), ("nl", "Netherlands"),
+                   ("ph", "Philippines"), ("pl", "Poland"), ("pt", "Portugal"), ("ro", "Romania"),
+                   ("rs", "Serbia"), ("ru", "Russia"), ("sa", "Saudi Arabia"), ("se", "Sweden"),
+                   ("za", "South Africa"))
+
+SOURCE_CHOICES = (("bbc", "BBC"), ("cnn", "CNN"), ("fox", "FOX"), ("google", "Google"),
+                     ("huffpost", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
+                        ("theguardian", "The Guardian"), ("theverge", "The Verge"), ("wsj", "Wall Street Journal"))
