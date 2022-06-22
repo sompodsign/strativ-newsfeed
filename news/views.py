@@ -15,6 +15,11 @@ def news_view(request):
 
 
 class SettingsView(LoginRequiredMixin, View):
+    """
+    This is the view which handles the settings of the news feed.
+    * The user can change the settings of the news feed.
+    * The user can update or create a new settings.
+    """
 
     template = 'news_feed/news_settings.html'
 
