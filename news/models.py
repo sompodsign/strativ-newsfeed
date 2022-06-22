@@ -24,11 +24,11 @@ class Article(UUIDMixin):
     A model representing a news article.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    thumbnail = models.URLField(max_length=200)
-    url = models.URLField(max_length=200)
-    sources = models.CharField(max_length=200)
-    country = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=False, null=False)
+    thumbnail = models.URLField(max_length=400)
+    url = models.URLField(max_length=200, blank=True, null=True)
+    sources = models.CharField(max_length=200, blank=True, null=True)
+    country = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return self.title

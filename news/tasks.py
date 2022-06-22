@@ -13,10 +13,14 @@ def curate_news():
     """
     users = get_user_model().objects.filter(is_active=True)
     for user in users:
-        news_setting = NewsSetting.objects.get(user=user)
-        articles = list(Article.objects.filter(owner=user).values_list('title', flat=True))
+        # Check if setting object available for the user
+        try:
+            news_setting = NewsSetting.objects.get(user=user)
+        except NewsSetting.DoesNotExist:
+            news_setting = None
 
-        if news_setting.is_active:
+        if news_setting is not None:
+            articles = list(Article.objects.filter(owner=user).values_list('title', flat=True))
             country = news_setting.country
             sources = news_setting.sources
             top_headlines = get_top_headlines(country, sources)
