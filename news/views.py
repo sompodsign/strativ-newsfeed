@@ -1,17 +1,22 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
 
 from .forms import SettingsForm
-from news.utils import get_top_headlines
-from .models import NewsSetting
+from .models import NewsSetting, Article
 
 
-@login_required()
-def news_view(request):
-    all_news = get_top_headlines("us", sources=['fox-news', 'cbs'])
-    return render(request, 'news_feed/portal.html', {'all_news': all_news})
+class NewsFeedView(LoginRequiredMixin, ListView):
+    model = Article
+    template_name = 'news_feed/feed.html'
+    context_object_name = 'articles'
+    paginate_by = 5
+
+    def get_queryset(self, *args, **kwargs):
+        user = self.request.user
+        articles = Article.objects.filter(owner=user)
+        return articles
 
 
 class SettingsView(LoginRequiredMixin, View):

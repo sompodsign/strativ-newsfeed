@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}News Portal{% endblock %}
+
+{% block content %}
+  <h1>Newsfeed</h1>
+  {% if articles|length == 0 %}
+    <h3>No news for you yet</h3>
+  {% else %}
+    {% for article in articles %}
+
+
+      <div class="card" style="width: 18rem;">
+      <a href="{{ article.url }}" class="article-card">
+        <img class="card-img-top" src="{{ article.thumbnail }}" alt="{{ article.title }}">
+        <div class="card-body">
+          <h5 class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</h5>
+        </div>
+        </a>
+        <p class="card-bottom">Source: {{ article.sources }} | Country: {{ article.country }}</p>
+      </div>
+
+    {% endfor %}
+  {% endif %}
+
+    {# .... **Now the pagination section** .... #}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="/news?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="/news?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+
+{% endblock %}

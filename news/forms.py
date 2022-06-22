@@ -7,7 +7,7 @@ class SettingsForm(forms.Form):
     Form for Settings model
     * country dropdown
     * sources checkbox
-    * keywords textarea
+    * keywords input field
     """
     country = forms.ChoiceField(
         choices=settings.COUNTRY_CHOICES,

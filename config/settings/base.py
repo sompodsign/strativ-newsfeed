@@ -99,7 +99,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+LOGIN_REDIRECT_URL = "news:news_view"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
@@ -242,7 +242,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -324,6 +324,7 @@ SPECTACULAR_SETTINGS = {
     ],
 }
 
+# dropdown menu choices for news settings form
 COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria"),
                    ("au", "Australia"), ("be", "Belgium"), ("bg", "Bulgaria"),
                    ("br", "Brazil"), ("ca", "Canada"), ("ch", "Switzerland"),
@@ -338,5 +339,5 @@ COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria
                    ("za", "South Africa"))
 
 SOURCE_CHOICES = (("bbc", "BBC"), ("cnn", "CNN"), ("fox", "FOX"), ("google", "Google"),
-                     ("huffpost", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
-                        ("theguardian", "The Guardian"), ("theverge", "The Verge"), ("wsj", "Wall Street Journal"))
+                  ("huffpost", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
+                  ("theguardian", "The Guardian"), ("theverge", "The Verge"), ("wsj", "Wall Street Journal"))

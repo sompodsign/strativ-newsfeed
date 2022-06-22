@@ -1,5 +1,4 @@
 import environ
-from django.core.mail import send_mail
 from newsapi import NewsApiClient
 
 
@@ -16,7 +15,6 @@ def get_top_headlines(country, sources):
     sources: sources list in string (e.g. 'abc-news,the-verge')
     * Get top headlines from newsapi.org
     """
-    sources = ", ".join(sources)
 
     # two different requests because country and sources can't be together
     top_headlines_by_country = newsapi.get_top_headlines(country=country)
