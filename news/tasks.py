@@ -14,6 +14,7 @@ def curate_news():
     users = get_user_model().objects.filter(is_active=True)
     for user in users:
         # Check if setting object available for the user
+        # if not go to next user
         try:
             news_setting = NewsSetting.objects.get(user=user)
         except NewsSetting.DoesNotExist:
@@ -33,5 +34,4 @@ def curate_news():
                         thumbnail=top_headline['urlToImage'],
                         url=top_headline['url'],
                         sources=top_headline['source']['name'],
-                        country=top_headline['source']['name']
                     )

@@ -25,7 +25,7 @@ class Article(UUIDMixin):
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, blank=False, null=False)
-    thumbnail = models.URLField(max_length=400)
+    thumbnail = models.URLField(max_length=400, blank=True, null=True)
     url = models.URLField(max_length=200, blank=True, null=True)
     sources = models.CharField(max_length=200, blank=True, null=True)
     country = models.CharField(max_length=200, blank=True, null=True)
