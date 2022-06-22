@@ -15,16 +15,36 @@ def news_view(request):
 
 
 class SettingsView(LoginRequiredMixin, View):
+
+    template = 'news_feed/news_settings.html'
+
     def get(self, request):
-        return render(request, 'news_feed/news_settings.html', context={'form': SettingsForm})
+        user = request.user
+        form = SettingsForm()
+        news_setting = NewsSetting.objects.filter(user=user).first()
+        if news_setting:
+            form = SettingsForm()
+            form.fields['country'].initial = news_setting.country
+            form.fields['sources'].initial = news_setting.sources.split(',')
+            form.fields['keywords'].initial = news_setting.keywords
+        return render(request, self.template, context={'form': form})
 
     def post(self, request):
         form = SettingsForm(request.POST)
+        user = request.user
+        news_setting = NewsSetting.objects.filter(user=user).first()
         if form.is_valid():
-            cd = form.cleaned_data
-            user = request.user
-            NewsSetting.objects.create(user=user,
-                                       country=cd['country'],
-                                       sources=cd['sources'],
-                                       keywords=cd['keywords'])
-
+            if news_setting:
+                news_setting.country = form.cleaned_data['country']
+                news_setting.sources = ','.join(form.cleaned_data['sources'])
+                news_setting.keywords = form.cleaned_data['keywords']
+                news_setting.save()
+            else:
+                news_setting = NewsSetting(
+                    user=user,
+                    country=form.cleaned_data['country'],
+                    sources=','.join(form.cleaned_data['sources']),
+                    keywords=form.cleaned_data['keywords']
+                )
+                news_setting.save()
+        return render(request, self.template, context={'form': form})
