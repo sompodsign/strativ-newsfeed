@@ -5,7 +5,7 @@ from django.views import View
 
 from .forms import SettingsForm
 from news.utils import get_top_headlines
-from .models import Settings
+from .models import NewsSetting
 
 
 @login_required()
@@ -23,8 +23,8 @@ class SettingsView(LoginRequiredMixin, View):
         if form.is_valid():
             cd = form.cleaned_data
             user = request.user
-            Settings.objects.create(user=user,
-                                    country=cd['country'],
-                                    sources=cd['sources'],
-                                    keywords=cd['keywords'])
+            NewsSetting.objects.create(user=user,
+                                       country=cd['country'],
+                                       sources=cd['sources'],
+                                       keywords=cd['keywords'])
 

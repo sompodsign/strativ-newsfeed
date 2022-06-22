@@ -35,7 +35,7 @@ class Article(UUIDMixin):
 
 
 # settings model
-class Settings(UUIDMixin):
+class NewsSetting(UUIDMixin):
     """
     A model that stores the settings of the news for user
     """

@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from news.models import Settings
+from news.models import NewsSetting
 
 
-@admin.register(Settings)
+@admin.register(NewsSetting)
 class SettingsAdmin(admin.ModelAdmin):
     """
     Admin class for Settings model
