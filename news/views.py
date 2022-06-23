@@ -51,6 +51,7 @@ class SettingsView(LoginRequiredMixin, View):
                 news_setting.sources = ','.join(form.cleaned_data['sources'])
                 news_setting.keywords = form.cleaned_data['keywords']
                 news_setting.save()
+                messages.success(request, 'Settings updated successfully!')
             else:
                 news_setting = NewsSetting(
                     user=user,
@@ -60,7 +61,7 @@ class SettingsView(LoginRequiredMixin, View):
                 )
                 news_setting.save()
                 if news_setting:
-                    messages.success(request, 'Settings updated successfully!')
+                    messages.success(request, 'Settings saved successfully!')
                 else:
                     messages.error(request, 'Settings could not be updated!')
 
