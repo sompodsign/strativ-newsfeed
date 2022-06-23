@@ -282,9 +282,11 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_USERNAME_REQUIRED = False
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -339,5 +341,6 @@ COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria
                    ("za", "South Africa"))
 
 SOURCE_CHOICES = (("bbc", "BBC"), ("cnn", "CNN"), ("fox", "FOX"), ("google", "Google"),
-                  ("huffpost", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
-                  ("theguardian", "The Guardian"), ("theverge", "The Verge"), ("wsj", "Wall Street Journal"))
+                  ("huff-post", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
+                  ("the-guardian", "The Guardian"), ("the-verge", "The Verge"), ("wsj", "Wall Street Journal"))
+
