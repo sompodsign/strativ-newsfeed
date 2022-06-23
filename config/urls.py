@@ -25,6 +25,8 @@ urlpatterns = [
 urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
+    # User api urls
+    path("api/", include("newsfeed.users.api.urls")),
     # DRF auth token
     path("api/login/", obtain_auth_token),
     # Swagger
