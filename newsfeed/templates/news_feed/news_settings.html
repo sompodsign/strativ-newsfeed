@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}News Settings{% endblock %}
 
 {% block content %}
   <h1>Settings</h1>
   <form method="post">
-    {{ form.as_p }}
+    {{ form|crispy }}
     {% csrf_token %}
-  <input type="submit" value="Save"/>
+  <input class="btn btn-success" type="submit" value="Save Settings"/>
   </form>
 {% endblock %}
