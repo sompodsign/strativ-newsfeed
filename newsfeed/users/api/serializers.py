@@ -85,4 +85,4 @@ class MyAuthTokenSerializer(serializers.Serializer):
             raise serializers.ValidationError(msg, code='authorization')
 
         attrs['user'] = user
-        return
+        return attrs
