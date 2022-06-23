@@ -10,7 +10,7 @@ class ArticleViewSet(ModelViewSet):
     serializer_class = ArticleSerializer
 
     def get_queryset(self, *args, **kwargs):
-        return self.queryset.filter(user=self.request.user)
+        return self.queryset.filter(owner=self.request.user)
 
     # add user to Article before saving
     def perform_create(self, serializer):
@@ -23,4 +23,4 @@ class NewsSettingViewSet(ModelViewSet):
     serializer_class = NewsSettingSerializer
 
     def get_queryset(self, *args, **kwargs):
-        return self.queryset.get(user=self.request.user)
+        return self.queryset.filter(user=self.request.user)

@@ -46,3 +46,7 @@ class NewsSetting(UUIDMixin):
     country = models.CharField(max_length=255, default='', blank=True)
     sources = models.CharField(max_length=500, default='', blank=True)
     keywords = models.TextField()
+
+    def __str__(self):
+        return self.user.username + '\'s settings'
+
