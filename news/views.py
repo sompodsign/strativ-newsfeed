@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView
+from django.contrib import messages
 
 from .forms import SettingsForm
 from .models import NewsSetting, Article
@@ -32,6 +33,7 @@ class SettingsView(LoginRequiredMixin, View):
         user = request.user
         form = SettingsForm()
         news_setting = NewsSetting.objects.filter(user=user).first()
+
         if news_setting:
             form = SettingsForm()
             form.fields['country'].initial = news_setting.country
@@ -57,4 +59,9 @@ class SettingsView(LoginRequiredMixin, View):
                     keywords=form.cleaned_data['keywords']
                 )
                 news_setting.save()
+                if news_setting:
+                    messages.success(request, 'Settings updated successfully!')
+                else:
+                    messages.error(request, 'Settings could not be updated!')
+
         return render(request, self.template, context={'form': form})
