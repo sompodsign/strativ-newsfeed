@@ -1,19 +1,24 @@
-# Thorgate's Django template
-[https://strativ.shampad.live](https://strativ.shampad.live)
+# Personalised Newsfeed
+Curates news periodically from newsapi.org. The news are displayed in a list. The list is paginated. The news are sorted by created time. 
 
-credentials: Admin [link](https://strativ.shampad.live/nfCkAZEQe5wXWXlx8Qna1ShLIYN5J7pa/)
+SITE: [https://strativ.shampad.live](https://strativ.shampad.live)
+
+API DOCS: [https://strativ.shampad.live/api/docs](https://strativ.shampad.live/api/docs)
+
+Credentials: Admin [link](https://strativ.shampad.live/nfCkAZEQe5wXWXlx8Qna1ShLIYN5J7pa/)
     
     [email]: sompod123@gmail.com
     [password]: 5946644S
-
-
-Curates news periodically from newsapi.org. The news are displayed in a list. The list is paginated. The news are sorted by created time. 
 
 ## Features
 
 - Django-based backend
 
-    - [Django](https://www.djangoproject.com/)
+    - [Django 3.2.13](https://www.djangoproject.com/)
+    - [Postgresql 13](https://www.postgresql.org/)
+    - [Django REST Framework 3.13.1](https://www.django-rest-framework.org/)
+    - [Celery 5.2.7](https://www.celeryproject.org/)
+    - [redis 4.3.3](https://redis.io/)
     - Separate settings for different environments (local/production)
     - Python 3.6 or later
     - Accessible from port `8000` for local development
