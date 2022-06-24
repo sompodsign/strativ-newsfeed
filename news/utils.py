@@ -27,6 +27,17 @@ def get_top_headlines(country, sources):
     return top_headlines
 
 
+def get_sources(country):
+    """
+    based on country codes get sources from newsapi.org
+    """
+    sources_obj = newsapi.get_sources(country=country)
+    sources = []
+    for source in sources_obj.get('sources'):
+        sources.append((source.get('id'), source.get('name')))
+    return sources
+
+
 def send_newsletter(user, title, url):
     """
     Task which sends newsletter to the user.
