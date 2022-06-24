@@ -40,3 +40,4 @@ def curate_news():
                     for keyword in keywords:
                         if keyword.lower() in (word.lower() for word in top_headline['title'].split(" ")):
                             send_newsletter(user, new_article.title, new_article.url)
+                            break
