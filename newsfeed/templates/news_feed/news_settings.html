@@ -2,6 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block title %}News Settings{% endblock %}
+{% block javascript %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+{% endblock %}
 
 {% block content %}
   <h1>Settings</h1>
@@ -10,4 +13,36 @@
     {% csrf_token %}
   <input class="btn btn-success" type="submit" value="Save Settings"/>
   </form>
+{% endblock %}
+
+{% block inline_javascript %}
+
+<script>
+  $(document).ready(() => {
+    $('#country').change(() => {
+      const currentValue = $('#country').val();
+
+      $.ajax(
+        {
+          url: `/api/news/sources/${currentValue}`,
+          type: 'GET',
+          success: (sources) => {
+            $('#sources').empty();
+            sources.forEach((source) => {
+              $('#sources').append(`<option value="${source[0]}">${source[1]}</option>`);
+            });
+
+
+
+          }
+        }
+      );
+    });
+
+  });
+</script>
+
+
+
+
 {% endblock %}

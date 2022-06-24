@@ -12,11 +12,12 @@ class SettingsForm(forms.Form):
     country = forms.ChoiceField(
         choices=settings.COUNTRY_CHOICES,
         label='Country',
-        widget=forms.Select(attrs={'class': 'form-control'}))
+        widget=forms.Select(attrs={'class': 'form-control', 'id': 'country'}))
 
     sources = forms.MultipleChoiceField(
         choices=settings.SOURCE_CHOICES,
-        label='Sources', )
+        label='Sources',
+        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'sources'}))
 
     keywords = forms.CharField(
         label='Keywords',
