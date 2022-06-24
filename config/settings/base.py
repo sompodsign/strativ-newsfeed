@@ -4,6 +4,7 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
+from celery.schedules import crontab
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # newsfeed/
@@ -346,3 +347,12 @@ SOURCE_CHOICES = (("bbc", "BBC"), ("cnn", "CNN"), ("fox", "FOX"), ("google", "Go
                   ("huff-post", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
                   ("the-guardian", "The Guardian"), ("the-verge", "The Verge"), ("wsj", "Wall Street Journal"))
 
+
+# celery tasks
+# ------------------------------------------------------------------------------
+CELERY_BEAT_SCHEDULE = {
+    'curate-news': {
+        'task': 'newsfeed.tasks.curate_news',
+        'schedule': crontab(minute="*/15"),
+    },
+}
