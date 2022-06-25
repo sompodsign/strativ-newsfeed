@@ -330,24 +330,23 @@ SPECTACULAR_SETTINGS = {
 }
 
 # dropdown menu choices for news settings form
-COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria"),
-                   ("au", "Australia"), ("be", "Belgium"), ("bg", "Bulgaria"),
-                   ("br", "Brazil"), ("ca", "Canada"), ("ch", "Switzerland"),
-                   ("cn", "China"), ("co", "Colombia"), ("cu", "Cuba"), ("cz", "Czech Republic"),
-                   ("de", "Denmark"), ("eg", "Egypt"), ("fr", "France"), ("gb", "United Kingdom"),
-                   ("gr", "Greece"), ("us", "United States"), ("hu", "Hungary"), ("id", "Indonesia"),
-                   ("ie", "Ireland"), ("ua", "Ukraine"), ("it", "Italy"), ("jp", "Japan"),
-                   ("kr", "South Korea"), ("lt", "Lithuania"), ("lv", "Latvia"), ("ma", "Morocco"),
-                   ("mx", "Mexico"), ("my", "Malaysia"), ("ng", "Nigeria"), ("nl", "Netherlands"),
-                   ("ph", "Philippines"), ("pl", "Poland"), ("pt", "Portugal"), ("ro", "Romania"),
-                   ("rs", "Serbia"), ("ru", "Russia"), ("sa", "Saudi Arabia"), ("se", "Sweden"),
+# Only countries which has sources
+COUNTRY_CHOICES = (("ar", "Argentina"),
+                   ("br", "Brazil"), ("ca", "Canada"),
+                   ("de", "Denmark"), ("fr", "France"), ("gb", "United Kingdom"),
+                    ("us", "United States"), ("id", "Indonesia"),
+                   ("ie", "Ireland"), ("ua", "Ukraine"), ("it", "Italy"),
+                   ("kr", "South Korea"),  ("ma", "Morocco"), ("sg", "Singapore"),
+                   ("mx", "Mexico"), ("my", "Malaysia"), ("ng", "Nigeria"),
+                   ("ph", "Philippines"),  ("pt", "Portugal"),
+                   ("rs", "Serbia"), ("sa", "Saudi Arabia"), ("se", "Sweden"),
                    ("za", "South Africa"))
 
 # celery tasks
 # ------------------------------------------------------------------------------
 CELERY_BEAT_SCHEDULE = {
     'curate-news': {
-        'task': 'newsfeed.tasks.curate_news',
-        'schedule': crontab(minute="*/15"),
+        'task': 'news.tasks.curate_news',
+        'schedule': crontab(minute="*/2"),
     },
 }
