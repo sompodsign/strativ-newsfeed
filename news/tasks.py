@@ -1,6 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+
 from config import celery_app
 from news.utils import get_top_headlines, send_newsletter
 
@@ -48,6 +50,7 @@ def send_newsletter_task():
     * get all articles by last hour - if available
     * send newsletter to the user based on the keywords on users settings
     """
+
     users = get_user_model().objects.filter(is_active=True)
     for user in users:
         # Check if setting object available for the user
@@ -60,10 +63,13 @@ def send_newsletter_task():
         if news_setting is not None:
             keywords = news_setting.keywords.split(',')
             articles = Article.objects.filter(owner=user)
-            articles_last_hour = articles.filter(created_at__gt=datetime.now() - timedelta(hours=1))
+            articles_last_hour = articles.filter(created_at__gt=timezone.now() - timedelta(hours=1))
+
             if articles_last_hour.exists():
                 for article in articles_last_hour:
+                    title = ''.join(c for c in article.title if c.isalnum() or c.isspace()).casefold()
                     for keyword in keywords:
-                        if keyword.casefold() in [word.casefold() for word in article.title.split()]:
+                        if keyword.casefold().strip() in title:
                             send_newsletter(user, article.title, article.url)
                             break
+
