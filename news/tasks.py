@@ -64,6 +64,6 @@ def send_newsletter_task():
             if articles_last_hour.exists():
                 for article in articles_last_hour:
                     for keyword in keywords:
-                        if keyword.casefold() in article.title.casefold():
+                        if keyword.casefold() in [word.casefold() for word in article.title.split()]:
                             send_newsletter(user, article.title, article.url)
                             break
