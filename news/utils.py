@@ -20,7 +20,12 @@ def get_top_headlines(country, sources):
     """
     top_headlines_by_country = newsapi.get_top_headlines(country=country)
     articles = top_headlines_by_country.get('articles')
-    top_headlines_by_sources = [article for article in articles if article['source']['id'] in sources]
+    top_headlines_by_sources = []
+
+    for article in articles:
+        article_id = article.get('source').get('id')
+        if article_id is not None and article_id in sources:
+            top_headlines_by_sources.append(article)
     return top_headlines_by_sources if top_headlines_by_sources else None
 
 

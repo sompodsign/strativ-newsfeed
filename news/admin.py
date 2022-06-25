@@ -16,4 +16,4 @@ class ArticleAdmin(admin.ModelAdmin):
     """
     Admin class for Article model
     """
-    list_display = ('title', 'thumbnail', 'url', 'sources', 'country')
+    list_display = ('title', 'thumbnail', 'url', 'sources', 'country', 'owner')

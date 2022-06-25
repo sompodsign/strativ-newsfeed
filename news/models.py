@@ -44,7 +44,7 @@ class NewsSetting(UUIDMixin):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     country = models.CharField(max_length=255, default='', blank=True)
-    sources = models.CharField(max_length=500, default='', blank=True)
+    sources = models.CharField(max_length=1000, default='', blank=True)
     keywords = models.TextField()
 
     def __str__(self):

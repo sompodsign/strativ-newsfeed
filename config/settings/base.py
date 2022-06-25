@@ -347,12 +347,12 @@ COUNTRY_CHOICES = (("ar", "Argentina"),
 CELERY_BEAT_SCHEDULE = {
     'curate-news': {
         'task': 'news.tasks.curate_news',
-        'schedule': crontab(minute="*/2"),
+        'schedule': crontab(minute="15"),
     },
 
     'send-news': {
         'task': 'news.tasks.send_newsletter_task',
-        'schedule': crontab(hour="*/1"),
+        'schedule': crontab(hour="1"),
         }
 }
 
