@@ -2,45 +2,74 @@
 {% load crispy_forms_tags %}
 
 {% block title %}News Settings{% endblock %}
-{% block javascript %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-{% endblock %}
+
 
 {% block content %}
-  <h1>Settings</h1>
-  <form method="post">
-    {{ form|crispy }}
-    {% csrf_token %}
-  <input class="btn btn-success" type="submit" value="Save Settings"/>
-  </form>
+  <div class="d-flex flex-lg-row justify-content-evenly flex-md-column">
+    <div class="w-50">
+      <h1>Settings</h1>
+      <form method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <input class="btn btn-success" type="submit" value="Save Settings"/>
+      </form>
+    </div>
+    <div>
+      {% if sources %}
+        <h1>Selected Sources</h1>
+        {% for source in sources %}
+          {{ forloop.counter }}. {{ source }}<br>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+  </div>
 {% endblock %}
 
 {% block inline_javascript %}
 
-<script>
-  $(document).ready(() => {
-    $('#country').change(() => {
-      const currentValue = $('#country').val();
+  <script>
+    // remove invalid class which raises because of django form validation
+          $('#sources').removeClass('is-invalid');
+    $(document).ready(() => {
+      const country = $('#country');
+      const sources_el = $('#sources');
 
       $.ajax(
         {
-          url: `/api/news/sources/${currentValue}`,
+          url: `/api/news/sources/${country.val()}`,
           type: 'GET',
           success: (sources) => {
-            $('#sources').empty();
+            sources_el.empty();
             sources.forEach((source) => {
-              $('#sources').append(`<option value="${source[0]}">${source[1]}</option>`);
+              sources_el.append(`<option value="${source[0]}">${source[1]}</option>`);
             });
-
-
 
           }
         }
       );
-    });
 
-  });
-</script>
+      country.change(() => {
+
+        $.ajax(
+          {
+            url: `/api/news/sources/${country.val()}`,
+            type: 'GET',
+            success: (sources) => {
+              sources_el.empty();
+              sources.forEach((source) => {
+                sources_el.append(`<option value="${source[0]}">${source[1]}</option>`);
+              });
+
+            }
+          }
+        );
+      });
+
+
+    });
+  </script>
 
 
 

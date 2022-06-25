@@ -15,7 +15,7 @@ class SettingsForm(forms.Form):
         widget=forms.Select(attrs={'class': 'form-control', 'id': 'country'}))
 
     sources = forms.MultipleChoiceField(
-        choices=settings.SOURCE_CHOICES,
+        initial=(('', 'Select sources'),),
         label='Sources',
         widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'sources'}))
 

@@ -343,11 +343,6 @@ COUNTRY_CHOICES = (("ae", "Arab Emirates"), ("ar", "Argentina"), ("at", "Austria
                    ("rs", "Serbia"), ("ru", "Russia"), ("sa", "Saudi Arabia"), ("se", "Sweden"),
                    ("za", "South Africa"))
 
-SOURCE_CHOICES = (("bbc", "BBC"), ("cnn", "CNN"), ("fox", "FOX"), ("google", "Google"),
-                  ("huff-post", "HuffPost"), ("nytimes", "New York Times"), ("reuters", "Reuters"),
-                  ("the-guardian", "The Guardian"), ("the-verge", "The Verge"), ("wsj", "Wall Street Journal"))
-
-
 # celery tasks
 # ------------------------------------------------------------------------------
 CELERY_BEAT_SCHEDULE = {
