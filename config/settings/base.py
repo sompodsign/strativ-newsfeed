@@ -349,4 +349,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'news.tasks.curate_news',
         'schedule': crontab(minute="*/2"),
     },
+
+    'send-news': {
+        'task': 'news.tasks.send_newsletter_task',
+        'schedule': crontab(hour="*/1"),
+        }
 }
+
