@@ -1,9 +1,9 @@
 # Personalised Newsfeed
 Curates news periodically from newsapi.org. The news are displayed in a list. The list is paginated. The news are sorted by created time. 
 
-SITE: [https://strativ.shampad.live](https://strativ.shampad.live)
+SITE: [https://strativ.shampad.live](https://strativ.shampad.live) -- not live anymore
 
-API DOCS: [https://strativ.shampad.live/api/docs](https://strativ.shampad.live/api/docs)
+API DOCS: [https://strativ.shampad.live/api/docs](https://strativ.shampad.live/api/docs)  -- not live anymore
 
 Credentials: Admin [link](https://strativ.shampad.live/nfCkAZEQe5wXWXlx8Qna1ShLIYN5J7pa/)
     
